@@ -2,22 +2,22 @@ const express = require("express");
 
 const app = express();
 
+app.get("/products", (req, res, next) => {
+  res.send("Here is the list of all products.");
+});
+app.post("/products", (req, res, next) => {
+  res.send("A new product has been added.");
+});
+
+app.get("/categories", (req, res, next) => {
+  res.send("Here is the list of all categories.");
+});
+app.post("/categories", (req, res, next) => {
+  res.send("A new category has been created.");
+});
 app.use((req, res, next) => {
-  req.userType = "Admin";
-  next();
+  res.status(404).send("<h1>404-Page Not Found</h1>");
 });
-
-app.get("/orders", (req, res, next) => {
-  res.send("Here is the list of all orders.");
+app.listen(4000, () => {
+  console.log(`server is running on local host 4000`);
 });
-app.post("/orders", (req, res, next) => {
-  res.send("A new order has been created.");
-});
-
-app.get("/users", (req, res, next) => {
-  res.send("Here is the list of all users.");
-});
-app.post("/users", (req, res, next) => {
-  res.send("A new user has been added.");
-});
-app.listen(3000);

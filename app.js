@@ -1,24 +1,30 @@
 const express = require("express");
-const productRouter = require("./routes/products");
-const categoryRouter = require("./routes/categories");
-const bookRouter = require("./routes/books");
-const coursesRouter = require("./routes/courses");
-const studentsRouter = require("./routes/students");
-const homeRouter = require("./routes/Home");
+// const productRouter = require("./routes/products");
+// const categoryRouter = require("./routes/categories");
+// const bookRouter = require("./routes/books");
+// const coursesRouter = require("./routes/courses");
+// const studentsRouter = require("./routes/students");
+// const homeRouter = require("./routes/Home");
+const cartRouter = require("./routes/cartRoutes");
+const userRouter = require("./routes/userRouts");
+const productRouter = require("./routes/productRoutes");
 const app = express();
 //logging middleware
 app.use((req, res, next) => {
   console.log(`${req.method} request made to ${req.url}`);
   next();
 });
-//Routing using express router
+//Routing using express routeruser
+app.use("/cart", cartRouter);
+app.use("/users", userRouter);
 app.use("/products", productRouter);
-app.use("/categories", categoryRouter);
-app.use("/courses", coursesRouter);
-app.use("/students", studentsRouter);
-app.use("/", homeRouter);
-//Library books endpoint
-app.use("/books", bookRouter);
+// app.use("/products", productRouter);
+// app.use("/categories", categoryRouter);
+// app.use("/courses", coursesRouter);
+// app.use("/students", studentsRouter);
+// app.use("/", homeRouter);
+// //Library books endpoint
+// app.use("/books", bookRouter);
 
 //wildpoint
 app.use((req, res) => {

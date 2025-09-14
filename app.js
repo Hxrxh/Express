@@ -1,24 +1,15 @@
 const express = require("express");
-
+const productRouter = require("./routes/products");
+const categoryRouter = require("./routes/categories");
 const app = express();
 //logging middleware
 app.use((req, res, next) => {
   console.log(`${req.method} request made to ${req.url}`);
   next();
 });
-app.get("/products", (req, res, next) => {
-  res.send("Here is the list of all products.");
-});
-
-app.post("/products", (req, res, next) => {
-  res.send("A new product has been added.");
-});
-app.get("/categories", (req, res, next) => {
-  res.send("Here is the list of all categories.");
-});
-app.post("/categories", (req, res) => {
-  res.send("A new category has been created.");
-});
+//Routing using express router
+app.use("/products", productRouter);
+app.use("/categories", categoryRouter);
 
 app.listen(4000, () => {
   console.log(`server is running on local host 4000`);

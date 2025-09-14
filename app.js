@@ -1,6 +1,7 @@
 const express = require("express");
 const productRouter = require("./routes/products");
 const categoryRouter = require("./routes/categories");
+const bookRouter = require("./routes/books");
 const app = express();
 //logging middleware
 app.use((req, res, next) => {
@@ -10,7 +11,8 @@ app.use((req, res, next) => {
 //Routing using express router
 app.use("/products", productRouter);
 app.use("/categories", categoryRouter);
-
+//Library books endpoint
+app.use("/books", bookRouter);
 app.listen(4000, () => {
   console.log(`server is running on local host 4000`);
 });

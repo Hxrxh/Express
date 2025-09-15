@@ -1,9 +1,6 @@
 const productServices = require("../Services/productService");
 
-const getProducts = (req, res) => {
-  const message = productServices.getProducts();
-  res.send(message);
-};
+const getProducts = (req, res) => productServices.getProducts(req, res);
 
 const postProducts = (req, res) => {
   const message = productServices.postProducts();

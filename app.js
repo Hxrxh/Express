@@ -14,6 +14,7 @@ app.use((req, res, next) => {
   console.log(`${req.method} request made to ${req.url}`);
   next();
 });
+app.use(express.json());
 //Routing using express routeruser
 app.use("/cart", cartRouter);
 app.use("/users", userRouter);
@@ -26,6 +27,8 @@ app.use("/products", productRouter);
 // //Library books endpoint
 // app.use("/books", bookRouter);
 
+//making public folder static
+app.use(express.static("Public"));
 //wildpoint
 app.use((req, res) => {
   res.status(400).send("Page not found");

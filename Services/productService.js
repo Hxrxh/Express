@@ -4,8 +4,8 @@ const getProducts = (req, res) => {
   res.sendFile(path.join(__dirname, "..", "View", "product.html"));
 };
 
-const postProducts = () => {
-  return "Adding a new product.";
+const postProducts = (data) => {
+  return { value: data.productName };
 };
 const getProductsById = (req) => {
   const id = parseInt(req.id);
